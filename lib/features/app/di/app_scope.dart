@@ -4,6 +4,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
 import 'package:nasa_images/api/repository/images/images_repository.dart';
+import 'package:nasa_images/api/service/image_item/image_item_api.dart';
 import 'package:nasa_images/api/service/images/images_api.dart';
 import 'package:nasa_images/config/app_config.dart';
 import 'package:nasa_images/config/environment/environment.dart';
@@ -54,7 +55,8 @@ class AppScope implements IAppScope {
       initialLocation: AppRoutePaths.imagesScreen,
     );
     final apiClient = ImagesApi(_dio);
-    _imagesRepository = ImagesRepository(apiClient);
+    final imageApiClient = ImageItemApi(_dio);
+    _imagesRepository = ImagesRepository(apiClient, imageApiClient);
     _imagesBloc = ImagesBloc(_imagesRepository);
   }
 

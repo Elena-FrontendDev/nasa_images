@@ -40,9 +40,14 @@ class ImagesMainScreenWidget
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
-                          child: Image.network(
-                            images?.elementAt(index).links?.first.href ?? '',
-                            fit: BoxFit.contain,
+                          child: InkWell(
+                            onTap: () => wm.openImageDetails(
+                              images?.elementAt(index).data?.first.nasaId,
+                            ),
+                            child: Image.network(
+                              images?.elementAt(index).links?.first.href ?? '',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),

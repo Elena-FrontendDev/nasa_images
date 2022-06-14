@@ -9,11 +9,11 @@ part of 'image_info_data.dart';
 ImageInfoData _$ImageInfoDataFromJson(Map<String, dynamic> json) =>
     ImageInfoData(
       title: json['title'] as String?,
-      nasaId: json['nasaId'] as String?,
+      nasaId: json['nasa_id'] as String?,
     );
 
 Map<String, dynamic> _$ImageInfoDataToJson(ImageInfoData instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'nasaId': instance.nasaId,
+      'nasa_id': instance.nasaId,
     };

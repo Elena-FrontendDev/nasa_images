@@ -7,6 +7,7 @@ import 'package:nasa_images/features/images/domain/image.dart';
 import 'package:nasa_images/features/images/screens/images_main_screen/images_main_screen_model.dart';
 import 'package:nasa_images/features/images/screens/images_main_screen/images_main_screen_widget.dart';
 import 'package:nasa_images/features/images/service/images_bloc/images_bloc.dart';
+import 'package:nasa_images/features/navigation/domain/entity/app_route_paths.dart';
 import 'package:provider/provider.dart';
 
 /// Factory for [ImagesMainScreenWidgetModel].
@@ -49,6 +50,13 @@ class ImagesMainScreenWidgetModel
     super.dispose();
   }
 
+  @override
+  void openImageDetails(String? imageId) {
+    context
+        .read<IAppScope>()
+        .router.pushNamed(AppRoutePaths.imageItemScreen, extra: imageId);
+  }
+
   void _updateState(ImagesBaseState state) {
     if (state is ImagesInitState) {
       _popularImagesListState.loading();
@@ -64,4 +72,7 @@ class ImagesMainScreenWidgetModel
 abstract class IImagesMainScreenWidgetModel extends IWidgetModel {
   /// State of state.
   ListenableState<EntityState<List<ImageItem>>> get popularImagesListState;
+
+  /// Function for open image info.
+  void openImageDetails(String? imageId);
 }

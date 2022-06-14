@@ -1,5 +1,4 @@
 import 'package:nasa_images/api/data/api_data_list.dart';
-import 'package:nasa_images/api/dto/images/image_response_data.dart';
 import 'package:nasa_images/features/images/domain/image.dart';
 import 'package:nasa_images/features/images/domain/image_collection.dart';
 import 'package:nasa_images/features/images/domain/image_info.dart';

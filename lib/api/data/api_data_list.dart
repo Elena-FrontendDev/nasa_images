@@ -1,3 +1,7 @@
+export '../dto/image_item/image_item_collection_data.dart';
+export '../dto/image_item/image_item_info_data.dart';
+export '../dto/image_item/image_item_link_data.dart';
+export '../dto/image_item/image_item_response_data.dart';
 export '../dto/images/image_collection_data.dart';
 export '../dto/images/image_data.dart';
 export '../dto/images/image_info_data.dart';
