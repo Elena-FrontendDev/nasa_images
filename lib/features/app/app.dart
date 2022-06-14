@@ -52,6 +52,10 @@ class _AppState extends State<App> {
         /// This is for navigation.
         routeInformationParser: _scope.router.routeInformationParser,
         routerDelegate:_scope.router.routerDelegate,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor:  const Color(0xFF3F3F3F),
+        ),
       ),
     );
   }

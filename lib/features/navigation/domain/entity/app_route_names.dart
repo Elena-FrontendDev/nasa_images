@@ -8,4 +8,5 @@
 abstract class AppRouteNames {
   /// TempScreen route name.
   static const String tempScreen = 'tempScreen';
+  static const String imagesScreen = 'imagesScreen';
 }

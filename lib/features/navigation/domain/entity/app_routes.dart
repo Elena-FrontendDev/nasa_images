@@ -1,3 +1,4 @@
+import 'package:nasa_images/features/navigation/domain/entity/images/images_routes.dart';
 import 'package:nasa_images/features/navigation/domain/entity/temp/temp_routes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,6 +9,7 @@ class AppRoutes implements AppRoutesDelegate{
   @override
   List<GoRoute> routeList = [
     ...tempRoutes,
+    ...imagesRoutes,
   ];
 }
 

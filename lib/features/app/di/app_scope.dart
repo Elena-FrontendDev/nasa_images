@@ -3,8 +3,11 @@ import 'dart:ui';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
+import 'package:nasa_images/api/repository/images/images_repository.dart';
+import 'package:nasa_images/api/service/images/images_api.dart';
 import 'package:nasa_images/config/app_config.dart';
 import 'package:nasa_images/config/environment/environment.dart';
+import 'package:nasa_images/features/images/service/images_bloc/images_bloc.dart';
 import 'package:nasa_images/features/navigation/domain/entity/app_route_paths.dart';
 import 'package:nasa_images/features/navigation/domain/entity/app_routes.dart';
 import 'package:nasa_images/features/navigation/service/router.dart';
@@ -16,6 +19,8 @@ class AppScope implements IAppScope {
   late final ErrorHandler _errorHandler;
   late final VoidCallback _applicationRebuilder;
   late final AppRouter _router;
+  late final ImagesRepository _imagesRepository;
+  late final ImagesBloc _imagesBloc;
 
   @override
   Dio get dio => _dio;
@@ -29,6 +34,12 @@ class AppScope implements IAppScope {
   @override
   AppRouter get router => _router;
 
+  @override
+  ImagesRepository get imagesRepository => _imagesRepository;
+
+  @override
+  ImagesBloc get imagesBloc => _imagesBloc;
+
   /// Create an instance [AppScope].
   AppScope({
     required VoidCallback applicationRebuilder,
@@ -40,8 +51,11 @@ class AppScope implements IAppScope {
     _errorHandler = DefaultErrorHandler();
     _router = AppRouter(
       delegate: AppRoutes(),
-      initialLocation: AppRoutePaths.tempScreen,
+      initialLocation: AppRoutePaths.imagesScreen,
     );
+    final apiClient = ImagesApi(_dio);
+    _imagesRepository = ImagesRepository(apiClient);
+    _imagesBloc = ImagesBloc(_imagesRepository);
   }
 
   Dio _initDio(Iterable<Interceptor> additionalInterceptors) {
@@ -95,4 +109,10 @@ abstract class IAppScope {
 
   /// Class that coordinates navigation for the whole app.
   AppRouter get router;
+
+  /// Repository for work with images.
+  ImagesRepository get imagesRepository;
+
+  /// Bloc for working with images states.
+  ImagesBloc get imagesBloc;
 }

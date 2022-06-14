@@ -1,0 +1,14 @@
+openapi: 3.0.2
+info:
+  title: "API"
+  version: "1.0.0"
+  contact:
+
+paths:
+
+  /popular.json:
+    get:
+      summary: Метод для получения списка популярных фото.
+      responses:
+        "200":
+          description: "Успех"

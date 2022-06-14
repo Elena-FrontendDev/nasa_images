@@ -13,13 +13,13 @@ abstract class Url {
   static String get devProxyUrl => '';
 
   /// TRest url.
-  static String get testUrl => 'http://uinames.com/api/';
+  static String get testUrl => 'https://images-assets.nasa.gov';
 
   /// Prod url.
-  static String get prodUrl => 'https://prod.surfstudio.ru/api';
+  static String get prodUrl => 'https://images-assets.nasa.gov';
 
   /// Dev url.
-  static String get devUrl => 'https://localhost:9999/food/hs/ExchangeSotr';
+  static String get devUrl => 'https://images-assets.nasa.gov';
 
   /// Base url.
   static String get baseUrl => Environment<AppConfig>.instance().config.url;
